@@ -3,6 +3,6 @@ Frontend web application for the DermaCare, written in ReactJS
 
 Usage: 
 
-$ nam install
+$ npm install
 
-$ node start
+$ npm start

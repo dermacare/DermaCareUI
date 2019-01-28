@@ -1,7 +1,7 @@
 {
   "name": "unibrowser-ui",
   "version": "1.0.0",
-  "description": "Frontend user interface for the unibrowser web application",
+  "description": "Frontend user interface for DermaCare",
   "main": "src/index.js",
   "scripts": {
     "test": "jest .test --config=jest.config.js",
@@ -14,12 +14,12 @@
     "type": "git",
     "url": "git+https://github.com/bradenhc/unibrowser-ui.git"
   },
-  "author": "Braden Hitchcock <developer.hitchcock@gmail.com>",
+  "author": "Roli Khanna <roli.khanna1995@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/bradenhc/unibrowser-ui/issues"
+    "url": "https://github.com/dermacare/issues"
   },
-  "homepage": "https://github.com/bradenhc/unibrowser-ui#readme",
+  "homepage": "https://github.com/dermacare#readme",
   "dependencies": {
     "@material-ui/core": "^3.2.0",
     "@material-ui/icons": "^3.0.1",
