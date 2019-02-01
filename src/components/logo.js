@@ -1,6 +1,9 @@
 import React from 'react';
-import logo from '../../assets/img/logo.png';
+import logo from '../../assets/img/icon.png';
+// import logo from '/Users/sandeepkhanna/Desktop/DermaCareUI/assets/img/logo.png';
 import { withStyles } from '@material-ui/core/styles';
+
+// var logo = '/Users/sandeepkhanna/Desktop/DermaCareUI/assets/img/logo.png';
 
 const styles = theme => ({
     logo: {

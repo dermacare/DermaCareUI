@@ -8,6 +8,7 @@ import theme from './theme';
 import styled from 'styled-components';
 import MapContainer from "./cts/map-container";
 import {sportCategories} from '../model/categories';
+import Typography from '@material-ui/core/Typography';
 
 const beaverOrange = "#DC4405";
 
@@ -15,14 +16,6 @@ const StyledQuickLinks = styled.div`
 	position: relative;
 	text-align: center;
 `
-
-const QuickLinks = ()=>(
-	<StyledQuickLinks>
-		<a href="/search/freefood">free food</a>
-		<br />
-        <a href="/cts">Corvallis Transport Information</a>
-	</StyledQuickLinks>
-)
 
 const StyledSportLinks = styled.div`
 	display: flex;
@@ -55,7 +48,7 @@ const LinkBagTitle = styled.span`
 
 const SportQuickLinks = ({sportCategories}) => (
 	<StyledSportLinks>
-		<LinkBagTitle>Sports Quick Links</LinkBagTitle>
+		<LinkBagTitle>Quick links to our best products!</LinkBagTitle>
 		{sportCategories.map((e, key)=>{
 			return (
 				<SportCategory key={key} href={`/search/sports?query=${e.query}`}>
@@ -107,7 +100,6 @@ class App extends React.Component {
 								<React.Fragment>
 									<Logo />
 									<SearchControl {...props} />
-									<QuickLinks />
 									<SportQuickLinks sportCategories = {sportCategories}/>
 								</React.Fragment>
 							)}

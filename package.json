@@ -1,5 +1,5 @@
 {
-  "name": "unibrowser-ui",
+  "name": "DermaCareUI",
   "version": "1.0.0",
   "description": "Frontend user interface for DermaCare",
   "main": "src/index.js",
@@ -8,18 +8,18 @@
     "start": "node node_modules/.bin/webpack-dev-server --mode development --open --hot",
     "build": "node node_modules/.bin/webpack --config webpack.config.js --mode production",
     "serve": "node node_modules/.bin/http-server ./dist",
-    "pipeline": "sh ./run-tests.sh && npm run build && docker build . -t unibrowser/unibrowser-ui:latest"
+    "pipeline": "sh ./run-tests.sh && npm run build . -t dermacare/dermacareui:latest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradenhc/unibrowser-ui.git"
+    "url": "git+https://github.com/dermcareui.git"
   },
   "author": "Roli Khanna <roli.khanna1995@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/dermacare/issues"
+    "url": "https://github.com/dermacareui/issues"
   },
-  "homepage": "https://github.com/dermacare#readme",
+  "homepage": "https://github.com/dermacareui#readme",
   "dependencies": {
     "@material-ui/core": "^3.2.0",
     "@material-ui/icons": "^3.0.1",

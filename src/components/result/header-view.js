@@ -14,7 +14,7 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
 		<Toolbar>
 			<Link to="/" className={classes.link}>
 				<Typography className={classes.title} variant="h6" color="inherit" noWrap>
-					Unibrowser
+					DermaCare $(classes.title)
 				</Typography>
 			</Link>
 			<form className={classes.form} onSubmit={onSearchSubmit}>
@@ -23,7 +23,7 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
 						<SearchIcon />
 					</div>
 					<InputBase
-						placeholder="Search Unibrowser..."
+						placeholder="Search DermaCare..."
 						classes={{ root: classes.inputRoot, input: classes.inputInput }}
 						value={searchQuery}
 						onChange={onSearchQueryChange}
