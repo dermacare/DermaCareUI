@@ -1,19 +1,23 @@
 const categories = [
 	{
-		name: 'Skin Care',
+		name: 'All',
 		value: 'all'
 	},
 	{
+		name: 'Skin Care',
+		value: 'skin'
+	},
+	{
 		name: 'Body Care',
-		value: 'faqs'
+		value: 'body'
 	},
 	{
 		name: 'Hair Care',
-		value: 'professors'
+		value: 'hair'
 	},
 	{
 		name: 'General Hygiene',
-		value: 'events'
+		value: 'hygiene'
 	}
 ];
 
