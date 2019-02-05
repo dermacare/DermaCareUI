@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import {specials} from '../model/categories';
 import Typography from '@material-ui/core/Typography';
 
-const beaverOrange = "#DC4405";
+const beaverOrange = "#3db31e";
 
 const StyledQuickLinks = styled.div`
 	position: relative;

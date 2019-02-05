@@ -26,7 +26,7 @@ class ResultControl extends React.Component {
 
 	async retrieveSearchResults(category, query){
 		try {
-			let resp = await fetch(`http://localhost:8080/api/${category}?query=${query}`);
+			let resp = await fetch(`http://localhost:8080/api/products?query=${query}`);
 			let data = await resp.json();
 			return data;
 		} catch(e) {
