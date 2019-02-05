@@ -6,8 +6,7 @@ import Logo from './logo';
 import ResultControl from './result/result-control';
 import theme from './theme';
 import styled from 'styled-components';
-import MapContainer from "./cts/map-container";
-import {sportCategories} from '../model/categories';
+import {specials} from '../model/categories';
 import Typography from '@material-ui/core/Typography';
 
 const beaverOrange = "#DC4405";
@@ -17,7 +16,7 @@ const StyledQuickLinks = styled.div`
 	text-align: center;
 `
 
-const StyledSportLinks = styled.div`
+const SpecialLinks = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	margin: 20px auto;
@@ -46,17 +45,17 @@ const LinkBagTitle = styled.span`
 	color: ${beaverOrange};
 `
 
-const SportQuickLinks = ({sportCategories}) => (
-	<StyledSportLinks>
+const QuickLinks = ({SpecialLinks}) => (
+	<SpecialLinks>
 		<LinkBagTitle>Quick links to our best products!</LinkBagTitle>
-		{sportCategories.map((e, key)=>{
+		{specialLinks.map((e, key)=>{
 			return (
-				<SportCategory key={key} href={`/search/sports?query=${e.query}`}>
+				<Special key={key} href={`/search?query=${e.query}`}>
 					{e.name}
-				</SportCategory>
+				</Special>
 			)
 		})}
-	</StyledSportLinks>
+	</SpecialLinks>
 )
 
 class App extends React.Component {
@@ -100,11 +99,10 @@ class App extends React.Component {
 								<React.Fragment>
 									<Logo />
 									<SearchControl {...props} />
-									<SportQuickLinks sportCategories = {sportCategories}/>
+									<SpecialLinks specialLinks = {specials}/>
 								</React.Fragment>
 							)}
 						/>
-                        <Route path="/cts" render={props => <MapContainer {...props} />} />
 						<Route path="/search/:category" render={props => <ResultControl {...props} />} />
 					</Switch>
 				</Router>

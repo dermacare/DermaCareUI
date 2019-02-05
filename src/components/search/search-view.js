@@ -48,7 +48,7 @@ let Search = ({ classes, category, categories, onSearch, onChange, onCategoryCha
 					<Grid item className={classes.searchGrid}>
 						<TextField
 							className={classes.search}
-							id="unibrowser-search"
+							id="dermacare-search"
 							label="Search DermaCare"
 							type="search"
 							margin="none"

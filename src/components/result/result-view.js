@@ -6,13 +6,7 @@ import styles from './result-styles';
 import eventsUtil from '../../util/events';
 import HeaderView from './header-view';
 import ListView from './list-view';
-import ProfessorView from './details/professor-view';
-import FaqView from './details/faq-view';
-import SeminarView from './details/seminar-view';
-import SportsView from './details/sports-view';
-import FreeFoodView from './details/free-food-view';
 import EventsView from './details/events-view'
-//import SeminarView from './details/sports-view'; // change to actual seminar view
 
 /**
  * Represents the main view for listing search results and their associated details after a user has entered a search
