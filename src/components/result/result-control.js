@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import ResultView from './result-view';
 import querystring from 'query-string';
 import mock, {eventsMock} from '../../model/results';
@@ -26,7 +27,7 @@ class ResultControl extends React.Component {
 
 	async retrieveSearchResults(category, query){
 		try {
-			let resp = await fetch(`http://localhost:8080/api/products?query=${query}`);
+			let resp = await fetch(`http://localhost:3000/api/products?query=${query}`);
 			let data = await resp.json();
 			return data;
 		} catch(e) {
@@ -47,7 +48,7 @@ class ResultControl extends React.Component {
 	onResultSelect(result) {
 		this.setState({selectedResult: result});
 		this.props.history.push({
-			pathname: `/search/${this.props.match.params.category}/results/${result.id}`
+			pathname: `/search/${this.props.match.params.category}/results/${result._id}`
 		})
 	}
 
@@ -60,9 +61,10 @@ class ResultControl extends React.Component {
 				onResultSelect={this.onResultSelect}
 				results={this.state.results}
 				selectedResult={this.state.selectedResult}
+				forceRefresh={true}
 			/>
 		);
 	}
 }
 
-export default ResultControl;
+export default withRouter(ResultControl);

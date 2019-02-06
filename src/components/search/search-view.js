@@ -28,7 +28,6 @@ let Search = ({ classes, category, categories, onSearch, onChange, onCategoryCha
 							<Select
 								required
 								className={classes.select}
-								disableUnderline={true}
 								value={category}
 								onChange={onCategoryChange}
 								inputProps={{
@@ -50,7 +49,6 @@ let Search = ({ classes, category, categories, onSearch, onChange, onCategoryCha
 						<TextField
 							className={classes.search}
 							id="dermacare-search"
-							disableUnderline={true}
 							label="Search"
 							type="search"
 							margin="none"
