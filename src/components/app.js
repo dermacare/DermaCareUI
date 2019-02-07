@@ -79,7 +79,7 @@ class App extends React.Component {
 	}
 
 	async callApi() {
-		const response = await fetch('http://localhost:3000/products');
+		const response = await fetch('http://dermacare.eastus.cloudapp.azure.com:3000/home');
 		const body = await response.json();
 
 		if (response.status !== 200) throw Error(body.message);
