@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import {specials} from '../model/categories';
 import Typography from '@material-ui/core/Typography';
 
-const beaverOrange = "#DC4405";
+const beaverOrange = "#3db31e";
 
 const StyledQuickLinks = styled.div`
 	position: relative;
@@ -79,7 +79,7 @@ class App extends React.Component {
 	}
 
 	async callApi() {
-		const response = await fetch('http://localhost:8081/home');
+		const response = await fetch('http://localhost:3000/products');
 		const body = await response.json();
 
 		if (response.status !== 200) throw Error(body.message);

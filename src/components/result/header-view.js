@@ -23,7 +23,7 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
 						<SearchIcon />
 					</div>
 					<InputBase
-						placeholder="Search DermaCare..."
+						placeholder="Search"
 						classes={{ root: classes.inputRoot, input: classes.inputInput }}
 						value={searchQuery}
 						onChange={onSearchQueryChange}

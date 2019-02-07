@@ -5,29 +5,28 @@ import styles from './list-styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 
-let ListView = ({classes, results, onResultSelect}) => (
+let ListView = ({classes, results, onResultSelect}) => {
+    console.log('I was triggered during render '+JSON.stringify(results[0]))
+    return (
     <React.Fragment>
         {!results
             ? ''
             : results.map(result => (
                 <Card
                     className={classes.result}
-                    key={result.type}
-                    id={result.id}
+                    key={result._id}
+                    id={result._id}
                     onMouseUp={e => onResultSelect(e, result)}
                 >
-                    <Typography className={classes.resultHeader}>{result.heading}</Typography>
-                    <Typography className={classes.resultUrl}>
-                        <a href={result.url}>{result.url}</a>
-                    </Typography>
+                    <Typography className={classes.resultHeader}>{result.name}</Typography>
                     <Typography className={classes.resultContent}>
-                        {result.content.substring(0, 200)}
-                        ...
-								</Typography>
+                        {result.name.substring(0, 200)}
+                    
+                    </Typography>
                 </Card>
             ))}
     </React.Fragment>
-);
+);}
 
 ListView.propTypes = {
     classes: PropTypes.object.isRequired

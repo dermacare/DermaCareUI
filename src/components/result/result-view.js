@@ -6,7 +6,7 @@ import styles from './result-styles';
 import eventsUtil from '../../util/events';
 import HeaderView from './header-view';
 import ListView from './list-view';
-import EventsView from './details/events-view'
+import ProductView from './details/product-view'
 
 /**
  * Represents the main view for listing search results and their associated details after a user has entered a search
@@ -78,18 +78,7 @@ class ResultView extends React.Component {
 						render = {
 							props => {
 								let category = props.match.params.category || "";
-								switch(category){
-									case "sports":
-										return <SportsView {...props} results={results} onResultSelect={this.onResultSelect} />
-									case "seminars":
-									 	return <SeminarView {...props} results={results} onResultSelect={this.onResultSelect} />
-									case "freefood":
-										return <FreeFoodView {...props} results={results} onResultSelect={this.onResultSelect} />
-									case "events":
-										return <EventsView {...props} results={results} onResultSelect={this.onResultSelect}/>
-									default:
-										return <ListView {...props} results={results} onResultSelect={this.onResultSelect} />
-								}
+									return <ListView {...props} results={results} onResultSelect={this.onResultSelect} />
 							}
 						}
 					/>
@@ -97,20 +86,7 @@ class ResultView extends React.Component {
 						exact
 						path="/search/:category/results/:id"
 						render={props => {
-							switch (this.props.category) {
-								case 'professors':
-									return <ProfessorView result={selectedResult} {...props} />;
-								case 'faqs':
-									return <FaqView result={selectedResult} {...props} />;
-								case 'sports':
-									return <div></div>;
-								case 'seminars':
-									return <div></div>;
-								case 'events':
-									return <div></div>;
-								default:
-									return <div>Empty</div>;
-							}
+								return <ProductView result={selectedResult} {...props} />;
 						}}
 					/>
 				</Switch>

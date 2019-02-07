@@ -49,7 +49,7 @@ let Search = ({ classes, category, categories, onSearch, onChange, onCategoryCha
 						<TextField
 							className={classes.search}
 							id="dermacare-search"
-							label="Search DermaCare"
+							label="Search"
 							type="search"
 							margin="none"
 							variant="outlined"

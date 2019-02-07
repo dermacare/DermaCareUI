@@ -10,6 +10,7 @@ const styles = theme => ({
 	},
 	searchIcon: {
 		display: 'none',
+		background: '#f2f3f7',
 		[theme.breakpoints.up('md')]: {
 			display: 'block'
 		}
