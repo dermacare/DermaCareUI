@@ -45,7 +45,7 @@ const LinkBagTitle = styled.span`
 	color: ${beaverOrange};
 `
 
-const QuickLinks = ({SpecialLinks}) => (
+const SpecialLinks = ({SpecialLinks}) => (
 	<SpecialLinks>
 		<LinkBagTitle>Quick links to our best products!</LinkBagTitle>
 		{specialLinks.map((e, key)=>{
