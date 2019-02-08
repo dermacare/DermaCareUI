@@ -9,6 +9,7 @@ class ResultControl extends React.Component {
   constructor(props) {
     super(props);
     let search = querystring.parse(this.props.location.search);
+    console.log(JSON.stringify(this.props))
     this.state = {
       query: search.query,
       category: this.props.match.params.category,

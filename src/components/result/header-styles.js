@@ -12,6 +12,7 @@ const styles = theme => ({
     },
     link: {
         textDecoration: 'none',
+        marginRight: '10px',
         color: 'inherit'
     },
     form: {

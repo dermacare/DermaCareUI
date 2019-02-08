@@ -7,7 +7,6 @@ import axios from 'axios';
 class ProductControl extends React.Component {
   constructor(props) {
     super(props);
-    console.log("ProductControl: "+JSON.stringify(this.props.match.params.id))
     this.state = {
       resultId: this.props.match.params.id,
       result: null,
@@ -23,7 +22,7 @@ class ProductControl extends React.Component {
     axios.get(`http://dermacare.eastus.cloudapp.azure.com:3000/api/products/${this.state.resultId}`)
       .then(({ data }) => {
         this.setState({result: data});
-        console.log("axios: "+ JSON.stringify(data));
+        //console.log("axios: "+ JSON.stringify(data));
       })
       .catch(error => {
         console.log(error);
@@ -32,7 +31,6 @@ class ProductControl extends React.Component {
 
   render() {
     if (this.state.result === null) {
-      console.log("NO RESULT")
       return null
     }
     return (

@@ -9,6 +9,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -26,15 +28,24 @@ class ProductView extends React.Component {
   }
   render() {
     const { classes, result} = this.props
-    console.log("Props: " + JSON.stringify(this.props))
-    console.log("I'm a product-view of: " + JSON.stringify(result))
     return (
       <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
+        <Grid container spacing={8}>
+          <Grid item>
+            <CardMedia style = {{ height: 120, width: 120 }}
+                className={classes.cover}
+                image={require('../../../../assets/img/no-image.png')}
+                title="Product image"
+            />
+          </Grid>
+          <Grid item>
             <Typography variant="h6" style = {{margin: '15px'}} className={'tableTitle'}>
               {result.name}
             </Typography>
+          </Grid>
+        </Grid>
+        <Table className={classes.table}>
+          <TableHead>
             <TableRow>
               <CustomTableCell>Ingredient name</CustomTableCell>
               <CustomTableCell align="right">Function</CustomTableCell>
@@ -50,7 +61,7 @@ class ProductView extends React.Component {
                 <CustomTableCell component="th" scope="row">
                   {row.name}
                 </CustomTableCell>
-                <CustomTableCell align="right">{row.function}</CustomTableCell>
+                <CustomTableCell align="right">{row.function.map(f => (<div>{f}</div>))}</CustomTableCell>
                 <CustomTableCell align="right">{row.uv}</CustomTableCell>
                 <CustomTableCell align="right">{row.acne}</CustomTableCell>
                 <CustomTableCell align="right">{row.irritant}</CustomTableCell>

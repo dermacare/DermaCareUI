@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 let ListView = ({classes, results, onResultSelect}) => {
-    console.log('I was triggered during render '+JSON.stringify(results[0]))
     return (
     <React.Fragment>
         {!results

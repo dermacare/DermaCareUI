@@ -1,7 +1,7 @@
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    display: 'flex'
+    width: '60%',
+    margin: 'auto'
   },
   paper: {
     margin: '10px',
@@ -14,7 +14,6 @@ const styles = theme => ({
   },
   'tableTitle': {
     margin: '20px 20px 20px 20px',
-    padding: '10px',
   }
 });
 
