@@ -99,7 +99,6 @@ class App extends React.Component {
 								<React.Fragment>
 									<Logo />
 									<SearchControl {...props} />
-									<SpecialLinks specialLinks = {specials}/>
 								</React.Fragment>
 							)}
 						/>
