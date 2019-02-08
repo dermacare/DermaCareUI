@@ -45,7 +45,7 @@ const LinkBagTitle = styled.span`
 	color: ${beaverOrange};
 `
 
-const SpecialLinks = ({SpecialLinks}) => (
+const MyLinks = ({SpecialLinks}) => (
 	<SpecialLinks>
 		<LinkBagTitle>Quick links to our best products!</LinkBagTitle>
 		{specialLinks.map((e, key)=>{
@@ -79,8 +79,10 @@ class App extends React.Component {
 	}
 
 	async callApi() {
-		const response = await fetch('http://localhost:3000/products');
+		const response = await fetch('http://dermacare.eastus.cloudapp.azure.com:3000/home');
 		const body = await response.json();
+		console.log("This is my response: ", response);
+		console.log("This is my body: ", body)
 
 		if (response.status !== 200) throw Error(body.message);
 
@@ -99,7 +101,7 @@ class App extends React.Component {
 								<React.Fragment>
 									<Logo />
 									<SearchControl {...props} />
-									<SpecialLinks specialLinks = {specials}/>
+									<SpecialLinks SpecialLinks = {specials}/>
 								</React.Fragment>
 							)}
 						/>

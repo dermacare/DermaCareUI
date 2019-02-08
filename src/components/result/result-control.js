@@ -27,7 +27,7 @@ class ResultControl extends React.Component {
 
 	async retrieveSearchResults(category, query){
 		try {
-			let resp = await fetch(`http://localhost:3000/api/products?query=${query}`);
+			let resp = await fetch(`http://dermacare.eastus.cloudapp.azure.com:3000/api/products?query=${query}`);
 			let data = await resp.json();
 			return data;
 		} catch(e) {
@@ -43,6 +43,17 @@ class ResultControl extends React.Component {
 			pathname: `/search/${this.props.match.params.category}`,
 			search: '?query=' + encodeURI(query)
 		});
+		this.setState({ query });
+		async() => {
+			try{
+				let results = await this.retrieveSearchResults(this.state.category, query);
+				this.setState({ results });
+			} catch(e){
+				console.log(e);
+				console.log("YOU DONE MESSED UP AARON.");
+				return "TROLLED YA! HA!";
+			}
+		}
 	}
 
 	onResultSelect(result) {
