@@ -19,9 +19,12 @@ class ProductControl extends React.Component {
   }
 
   retrieveSearchResults(result){
+    let colorSequence = {"0": "#ef9a9a", "1": "#ef5350", "2": "#d32f2f", "3": "#b71c1c", "4": "#4e342e", "5": "black"};
     axios.get(`http://dermacare.eastus.cloudapp.azure.com:3000/api/products/${this.state.resultId}`)
       .then(({ data }) => {
-        this.setState({result: data});
+        this.setState({result: data,
+                       colorSequence: colorSequence
+                      });
         //console.log("axios: "+ JSON.stringify(data));
       })
       .catch(error => {

@@ -11,6 +11,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
+import { MdFavorite, MdWbSunny, MdGroupWork, MdFace } from 'react-icons/md';
+import { IconContext } from "react-icons";
+
+const colorAcne = ["green", "yellow","orange","orange","red", "red"];
+const colorIrritation = ["green", "#fdd835", "#fdd835", "#ff6d00", "red"];
+const colorSafety = ["green", "green", "#fdd835", "#fdd835", "#ff6d00", "#ff6d00", "red", "red", "red", "red", "red", "red"];
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -25,6 +31,8 @@ const CustomTableCell = withStyles(theme => ({
 class ProductView extends React.Component {
   constructor(props) {
     super(props);
+    console.log("MY CURRENT STATE: ", props);
+    // props.result.ingredients);
   }
   render() {
     const { classes, result} = this.props
@@ -62,10 +70,58 @@ class ProductView extends React.Component {
                   {row.name}
                 </CustomTableCell>
                 <CustomTableCell align="right">{row.function.map(f => (<div>{f}</div>))}</CustomTableCell>
-                <CustomTableCell align="right">{row.uv}</CustomTableCell>
-                <CustomTableCell align="right">{row.acne}</CustomTableCell>
-                <CustomTableCell align="right">{row.irritant}</CustomTableCell>
-                <CustomTableCell align="right">{row.safety}</CustomTableCell>
+                <CustomTableCell align="right">
+                {row.uv ?
+                  (
+                    <IconContext.Provider value={{ color: "#fdd835", className: "global-class-name" }}>
+                    <MdWbSunny / >
+                    </IconContext.Provider>
+                  ) :
+                  (
+                    <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
+                    <MdWbSunny / >
+                    </IconContext.Provider>
+                  )}
+                  </CustomTableCell>
+                <CustomTableCell align="right">
+                {row.acne ?
+                  (
+                    <IconContext.Provider value={{ color: colorAcne[row.acne], className: "global-class-name" }}>
+                    <MdGroupWork / >
+                    </IconContext.Provider>
+                  ) :
+                  (
+                    <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
+                    <MdGroupWork / >
+                    </IconContext.Provider>
+                  )}
+                </CustomTableCell>
+                <CustomTableCell align="right">
+                {row.irritant ?
+                  (
+                    <IconContext.Provider value={{ color: colorIrritation[row.irritant], className: "global-class-name" }}>
+                    <MdFace / >
+                    </IconContext.Provider>
+                  ) :
+                  (
+                    <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
+                    <MdFace / >
+                    </IconContext.Provider>
+                  )}
+                </CustomTableCell>
+                <CustomTableCell align="right">
+                {row.safety ?
+                  (
+                    <IconContext.Provider value={{ color: colorIrritation[row.safety.charAt("0")], className: "global-class-name" }}>
+                    <MdFavorite / >
+                    </IconContext.Provider>
+                  ) :
+                  (
+                    <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
+                    <MdFavorite / >
+                    </IconContext.Provider>
+                  )}
+                </CustomTableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -80,4 +136,3 @@ ProductView.propTypes = {
 };
 
 export default withStyles(styles)(ProductView);
-
