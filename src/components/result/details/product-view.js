@@ -146,7 +146,7 @@ class ProductView extends React.Component {
                 <CustomTableCell align="right">
                 {row.safety ?
                   (
-                    <IconContext.Provider value={{ size: '2em', color: colorIrritation[row.safety.charAt("0")], className: "global-class-name" }}>
+                    <IconContext.Provider value={{ size: '2em', color: colorSafety[row.safety.charAt("0")], className: "global-class-name" }}>
                     <IoIosLeaf / >
                     </IconContext.Provider>
                   ) :
