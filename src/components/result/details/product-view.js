@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import { MdFavorite, MdWbSunny, MdGroupWork, MdFace } from 'react-icons/md';
+import {IoIosLeaf} from 'react-icons/io';
 import { IconContext } from "react-icons";
 
 const colorAcne = ["green", "yellow","orange","orange","red", "red"];
@@ -113,12 +114,12 @@ class ProductView extends React.Component {
                 {row.safety ?
                   (
                     <IconContext.Provider value={{ color: colorIrritation[row.safety.charAt("0")], className: "global-class-name" }}>
-                    <MdFavorite / >
+                    <IoIosLeaf / >
                     </IconContext.Provider>
                   ) :
                   (
                     <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
-                    <MdFavorite / >
+                    <IoIosLeaf / >
                     </IconContext.Provider>
                   )}
                 </CustomTableCell>
