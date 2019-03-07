@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ProductComparisonView from './product-view';
+import ProductComparisonView from './product-comparison-view';
 import querystring from 'query-string';
 import axios from 'axios';
 
-class ProductControl extends React.Component {
+class ProductComparisonControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,4 +44,4 @@ class ProductControl extends React.Component {
   }
 }
 
-export default withRouter(ProductControl);
+export default withRouter(ProductComparisonControl);
