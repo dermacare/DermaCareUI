@@ -1,6 +1,6 @@
 const styles = theme => ({
   root: {
-    width: '60%',
+    width: '90%',
     margin: 'auto'
   },
   paper: {
@@ -14,6 +14,10 @@ const styles = theme => ({
   },
   'tableTitle': {
     margin: '20px 20px 20px 20px',
+  },
+  table: {
+    width: '100%',
+    margin: 'auto'
   }
 });
 
