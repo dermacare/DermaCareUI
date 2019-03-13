@@ -37,7 +37,7 @@ class ProductComparisonControl extends React.Component {
       return null
     }
     return (
-      <ProductView
+      <ProductComparisonView
         result={this.state.result}
       />
     );

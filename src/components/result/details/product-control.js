@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ProductComparisonView from './product-view';
+import ProductView from './product-view';
 import querystring from 'query-string';
 import axios from 'axios';
 

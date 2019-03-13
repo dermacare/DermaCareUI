@@ -6,8 +6,7 @@ import styles from './result-styles';
 import eventsUtil from '../../util/events';
 import HeaderView from './header-view';
 import ListView from './list-view';
-import ProductControl from './details/product-control'
-import ProductComparisonControl from './comparison/product-comparison-control'
+import ProductControl from './details/product-control';
 
 /**
  * Represents the main view for listing search results and their associated details after a user has entered a search
@@ -86,7 +85,7 @@ class ResultView extends React.Component {
           <Route
             exact
             path="/search/:category/results/:id"
-            render={props => <ProductComparisonControl result={selectedResult} {...props} />} />; // changes here
+            render={props => <ProductControl result={selectedResult} {...props} />} />;
             }}
           />
         </Switch>

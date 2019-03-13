@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   'tableTitle': {
     margin: '20px 20px 20px 20px',
-  }
+  },
 });
 
 export default styles;
