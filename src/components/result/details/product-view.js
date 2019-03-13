@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './product-styles';
@@ -19,7 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import {IoIosGitCompare} from "react-icons/io";
 import {IoIosHeart} from "react-icons/io";
-import {IoIosLogOut} from "react-icons/io";
+import ProductComparisonControl from '../comparison/product-comparison-control';
 
 const colorAcne = ["green", "e3e31a","orange","orange","red", "red"];
 const colorIrritation = ["green", "#fdd835", "#fdd835", "#ff6d00", "red"];
@@ -45,14 +46,30 @@ class ProductView extends React.Component {
     // console.log("MY CURRENT STATE: ", props);
     // props.result.ingredients);
   }
+
+  addToCompareList(){
+    console.log("Clicked on compare list");
+    ProductComparisonControl.retrieveComparisonResults();
+  }
+
+  addToFavoriteList(){
+    console.log("Clicked on favorites list");
+  }
+
   render() {
     const { classes, result} = this.props
     return (
       <Paper className={classes.root}>
         <div align="right">
-        <IoIosGitCompare style={{margin:"20px"}} align="right" />
-        <IoIosHeart style={{margin:"20px"}} align="right" />
-        <IoIosLogOut style={{margin:"20px"}} align="right" />
+        <IoIosGitCompare style={{margin:"20px"}} align="right" onClick={this.addToCompareList} />
+        <IoIosHeart style={{margin:"20px"}} align="right" onClick={this.addToFavoriteList} />
+        <Switch>
+        <Route
+          exact
+          path="/api/profile/comparison/compare/"
+          render={props => <ProductComparisonControl result={selectedResult} {...props} />}
+        />
+        </Switch>
         </div>
         <Grid container spacing={8}>
           <Grid item>

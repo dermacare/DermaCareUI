@@ -11,21 +11,20 @@ class ProductComparisonControl extends React.Component {
       resultId: this.props.match.params.id,
       result: null,
     };
-    this.retrieveSearchResults = this.retrieveSearchResults.bind(this);
+    this.retrieveComparisonResults = this.retrieveComparisonResults.bind(this);
+    this.addToCompareList = this.addToCompareList.bind(this);
+    this.addToFavoriteList = this.addToFavoriteList.bind(this);
   }
 
   async componentDidMount(){
-    await this.retrieveSearchResults(this.state.result);
+    await this.retrieveComparisonResults(this.state.result);
   }
 
-  retrieveSearchResults(result){
-    let colorSequence = {"0": "#ef9a9a", "1": "#ef5350", "2": "#d32f2f", "3": "#b71c1c", "4": "#4e342e", "5": "black"};
-    axios.get(`http://dermacare.eastus.cloudapp.azure.com:3000/api/products/${this.state.resultId}`)
+  async retrieveComparisonResults(){
+    axios.get(`http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/comparison/compare/`)
       .then(({ data }) => {
-        this.setState({result: data,
-                       colorSequence: colorSequence
-                      });
-        //console.log("axios: "+ JSON.stringify(data));
+        this.setState({ result: data });
+        console.log("axios: "+ JSON.stringify(data));
       })
       .catch(error => {
         console.log(error);
