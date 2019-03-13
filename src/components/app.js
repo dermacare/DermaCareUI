@@ -29,14 +29,6 @@ const SpecialLinks = styled.div`
 	font-size: 16px;
 `
 
-const SportCategory = styled.a`
-	display: flex;
-	color: ${beaverOrange};
-	margin: 0 5px;
-	flex-basis: 30%;
-	justify-content: center;
-`
-
 const LinkBagTitle = styled.span`
 	position: absolute;
 	top: -10px;

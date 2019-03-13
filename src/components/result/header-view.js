@@ -9,6 +9,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import {IoIosHeart} from "react-icons/io";
+import {IoIosLogIn} from "react-icons/io";
 
 let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, onSearchBarFocus }) => (
   <AppBar position="static" style={{background:'#1e6125e8'}}>
@@ -32,6 +34,8 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
         </div>
       </form>
       <div className={classes.grow} />
+      <IoIosHeart align="right" style={{margin:"20px"}} />
+      <IoIosLogIn align="right" style={{margin:"20px"}} />
     </Toolbar>
   </AppBar>
 );
