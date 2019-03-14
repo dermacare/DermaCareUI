@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {IoIosHeart} from "react-icons/io";
 import {IoIosLogIn} from "react-icons/io";
+import ProfileControl from '../profile/profile-control';
 
 let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, onSearchBarFocus }) => (
   <AppBar position="static" style={{background:'#1e6125e8'}}>
@@ -18,7 +19,7 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
       <Link to="/" className={classes.link}>
             <img className={classes.image} src={require('../../../assets/img/icon1.png')} style={{height: '70px'}} />
       </Link>
-      <form className={classes.form} onSubmit={onSearchSubmit}>
+      <form className={classes.form} onSubmit={onSearchSubmit} style={{width:'auto'}}>
         <div className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />
@@ -36,6 +37,7 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
       <div className={classes.grow} />
       <IoIosHeart align="right" style={{margin:"20px"}} />
       <IoIosLogIn align="right" style={{margin:"20px"}} />
+      <ProfileControl />
     </Toolbar>
   </AppBar>
 );
