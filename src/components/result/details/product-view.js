@@ -20,7 +20,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import {IoIosGitCompare} from "react-icons/io";
 import {IoIosHeart} from "react-icons/io";
-import ProductComparisonControl from '../comparison/product-comparison-control';
 
 const colorAcne = ["green", "e3e31a","orange","orange","red", "red"];
 const colorIrritation = ["green", "#fdd835", "#fdd835", "#ff6d00", "red"];
