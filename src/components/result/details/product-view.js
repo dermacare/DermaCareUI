@@ -47,9 +47,12 @@ class ProductView extends React.Component {
     // props.result.ingredients);
   }
 
-  addToCompareList(){
+  addToCompareList(props){
     console.log("Clicked on compare list");
-    ProductComparisonControl.retrieveComparisonResults();
+    // let category = props;
+    // console.log("MY PROPS: ", category);
+    // category = "all";
+    // props.history.push("/search/:category");
   }
 
   addToFavoriteList(){
@@ -61,15 +64,8 @@ class ProductView extends React.Component {
     return (
       <Paper className={classes.root}>
         <div align="right">
-        <IoIosGitCompare style={{margin:"20px"}} align="right" onClick={this.addToCompareList} />
-        <IoIosHeart style={{margin:"20px"}} align="right" onClick={this.addToFavoriteList} />
-        <Switch>
-        <Route
-          exact
-          path="/api/profile/comparison/compare/"
-          render={props => <ProductComparisonControl result={selectedResult} {...props} />}
-        />
-        </Switch>
+        <IoIosGitCompare style={{margin:"20px"}} align="right" href={"/comparison"} />
+        <IoIosHeart style={{margin:"20px"}} align="right" href={"/favorites"} />
         </div>
         <Grid container spacing={8}>
           <Grid item>
