@@ -79,7 +79,7 @@ class ResultView extends React.Component {
             render = {
               props => {
                 let category = props.match.params.category || "";
-                  return <ListView {...props} results={results} onResultSelect={this.onResultSelect} />
+                  return <ListView {...props} results={results} onResultSelect={this.onResultSelect} showRemove={false} />
               }
             }
           />

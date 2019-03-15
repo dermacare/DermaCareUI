@@ -45,6 +45,7 @@ class ProfileControl extends React.Component {
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
+          'token': localStorage.getItem('token')
           }
     })
     .then(response => {

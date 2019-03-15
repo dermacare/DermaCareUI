@@ -21,9 +21,23 @@ class FavoritesControl extends React.Component {
     this.retrieveFavorites = this.retrieveFavorites.bind(this);
     this.onResultSelect = this.onResultSelect.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   };
 
-  async onResultSelect(result) {
+  retrieveProduct(result){
+    axios.get(`http://dermacare.eastus.cloudapp.azure.com:3000/api/products/${result._id}`)
+      .then(({ data }) => {
+        this.setState({selectedResult: data});
+        console.log("axios: "+ JSON.stringify(data));
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  async onResultSelect(event, result) {
+    event.preventDefault();
+
     await this.retrieveProduct(result);
     this.props.history.push({
       pathname: `/search/${this.props.match.params.category}/results/${result._id}`
@@ -37,6 +51,33 @@ class FavoritesControl extends React.Component {
   retrieveFavorites(category, query){
     fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/favorites', {'headers': {'token': localStorage.getItem('token')}})
       .then(response => {
+          return response.json()
+      })
+      .then(json => {
+        if ('error' in json) {
+          this.setState({errorMsg: json.error})
+        } else {
+          this.setState({results: json});
+        }
+      })
+  }
+
+  onRemove(e, res){
+    e.preventDefault();
+    e.stopPropagation();
+    fetch(`http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/favorites/${res._id}`, {
+        method: 'DELETE',
+        'headers': {'token': localStorage.getItem('token')}
+    })
+      .then(response => {
+          if (response.status === 204) {
+            var list = this.state.results;
+            list.splice(list.indexOf(res), 1);
+            this.setState({results: list})
+            if (this.state.results.length == 0) {
+              this.setState({errorMsg: 'No products in the list'})
+            }
+      }
           return response.json()
       })
       .then(json => {
@@ -66,7 +107,7 @@ class FavoritesControl extends React.Component {
         />
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
-        <ListView results={this.state.results} onResultSelect={this.onResultSelect} />
+        <ListView results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
       </div>
     );
   }

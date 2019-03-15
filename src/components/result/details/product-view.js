@@ -20,6 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import {IoIosGitCompare} from "react-icons/io";
 import {IoIosHeart} from "react-icons/io";
+import ErrorMessage from './error-message'
 
 const colorAcne = ["green", "e3e31a","orange","orange","red", "red"];
 const colorIrritation = ["green", "#fdd835", "#fdd835", "#ff6d00", "red"];
@@ -27,6 +28,8 @@ const colorSafety = ["green", "green", "#fdd835", "#fdd835", "#ff6d00", "#ff6d00
 
 const tooltipTitle = "Green color means that the ingredient is low hazard. The closer to red is the color, the higher potential risk.";
 const uvTooltipTitle = "UV is not implemented yet."
+const compareTooltipTitle = "Add product to camparison list"
+const favTooltipTitle = "Add product to favorites."
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -42,31 +45,104 @@ const CustomTableCell = withStyles(theme => ({
 class ProductView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      errorMessage: '',
+      showError: false,
+    };
     this.addToCompareList = this.addToCompareList.bind(this);
     this.addToFavoriteList = this.addToFavoriteList.bind(this);
-    // console.log("MY CURRENT STATE: ", props);
-    // props.result.ingredients);
+    this.handleCloseError = this.handleCloseError.bind(this);
+  }
+
+  handleCloseError = () => {
+    this.setState({ errorMessage: '' })
+    this.setState({ showError: false })
   }
 
   addToCompareList(){
     console.log("Clicked on compare list");
     let obj = this.props.result;  // Object to add to Comparison list
     // ADD CODE HERE
+    fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/comparison/add', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': localStorage.getItem('token')
+          },
+      body: JSON.stringify({'productId': obj._id}),
+      mode: 'cors'
+    })
+    .then(response => {
+        if (response.status == 201) {
+          this.setState({errorMessage: 'Added'})
+          this.setState({showError: true})
+        }
+        return response.json()
+    })
+    .then(json => {
+       console.log("Res: "+ JSON.stringify(json))
+        if ('error' in json) {
+          this.setState({errorMessage: json.error})
+          this.setState({showError: true})
+        }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   addToFavoriteList(){
     console.log("Clicked on favorites list");
     let obj = this.props.result;  // Object to add to Favorites list
     // ADD CODE HERE
+    fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/favorites/add', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': localStorage.getItem('token')
+          },
+      body: JSON.stringify({'productId': obj._id}),
+      mode: 'cors'
+    })
+    .then(response => {
+        if (response.status == 201) {
+          this.setState({errorMessage: 'Added'})
+          this.setState({showError: true})
+        }
+        return response.json()
+    })
+    .then(json => {
+       console.log("Res: "+ JSON.stringify(json))
+      if ('error' in json) {
+        this.setState({errorMessage: json.error})
+        this.setState({showError: true})
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   render() {
-    const { classes, result} = this.props
+    const {classes, result} = this.props
     return (
       <Paper className={classes.root}>
+        <ErrorMessage errorMessage={this.state.errorMessage} showError={this.state.showError} handleCloseError={this.handleCloseError}/>
         <div align="right">
-        <IoIosGitCompare {...this.props} style={{margin:"20px"}} align="right" onClick={this.addToCompareList} />
-        <IoIosHeart {...this.props} style={{margin:"20px"}} align="right" onClick={this.addToFavoriteList} />
+        <Tooltip placement="top" title={compareTooltipTitle} aria-label="help">
+          <IconButton color='inherit' onClick={this.addToCompareList}>
+            <IoIosGitCompare {...this.props} style={{margin:"20px"}} align="right" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip placement="top" title={favTooltipTitle} aria-label="help">
+          <IconButton color='inherit' onClick={this.addToFavoriteList}>
+            <IoIosHeart {...this.props} style={{margin:"20px"}} align="right" />
+          </IconButton>
+        </Tooltip>
         </div>
         <Grid container spacing={8}>
           <Grid item>
