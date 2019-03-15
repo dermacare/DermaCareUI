@@ -7,6 +7,7 @@ import eventsUtil from '../../util/events';
 import HeaderView from './header-view';
 import ListView from './list-view';
 import ProductControl from './details/product-control';
+import ProductCompareControl from '../product-compare/product-compare-control';
 
 /**
  * Represents the main view for listing search results and their associated details after a user has entered a search
@@ -88,6 +89,14 @@ class ResultView extends React.Component {
             render={props => <ProductControl result={selectedResult} {...props} />} />;
             }}
           />
+          // COMMON INGREDIENTS ROUTE
+          <Route
+            exact
+            path="/compare"
+            render={props => <ProductCompareControl result={selectedResult} {...props} />} />;
+            }}
+          />
+          // ROUTE ENDS HERE
         </Switch>
       </div>
     );
