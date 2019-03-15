@@ -42,20 +42,22 @@ const CustomTableCell = withStyles(theme => ({
 class ProductView extends React.Component {
   constructor(props) {
     super(props);
+    this.addToCompareList = this.addToCompareList.bind(this);
+    this.addToFavoriteList = this.addToFavoriteList.bind(this);
     // console.log("MY CURRENT STATE: ", props);
     // props.result.ingredients);
   }
 
-  addToCompareList(props){
+  addToCompareList(){
     console.log("Clicked on compare list");
-    // let category = props;
-    // console.log("MY PROPS: ", category);
-    // category = "all";
-    // props.history.push("/search/:category");
+    let obj = this.props.result;  // Object to add to Comparison list
+    // ADD CODE HERE
   }
 
   addToFavoriteList(){
     console.log("Clicked on favorites list");
+    let obj = this.props.result;  // Object to add to Favorites list
+    // ADD CODE HERE
   }
 
   render() {
@@ -63,8 +65,8 @@ class ProductView extends React.Component {
     return (
       <Paper className={classes.root}>
         <div align="right">
-        <IoIosGitCompare style={{margin:"20px"}} align="right" href={"/comparison"} />
-        <IoIosHeart style={{margin:"20px"}} align="right" href={"/favorites"} />
+        <IoIosGitCompare {...this.props} style={{margin:"20px"}} align="right" onClick={this.addToCompareList} />
+        <IoIosHeart {...this.props} style={{margin:"20px"}} align="right" onClick={this.addToFavoriteList} />
         </div>
         <Grid container spacing={8}>
           <Grid item>

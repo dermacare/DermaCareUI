@@ -10,8 +10,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {IoIosHeart} from "react-icons/io";
-import {IoIosLogIn} from "react-icons/io";
 import ProfileControl from '../profile/profile-control';
+import {IoIosGitCompare} from "react-icons/io";
+
+let renderFavoritesList = function(){
+  console.log("Call route to render Favorites List");
+  // ADD CODE HERE
+}
+
+let renderComparisonList = function(){
+  console.log("Call route to render Comparison List");
+  // ADD CODE HERE
+}
 
 let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, onSearchBarFocus }) => (
   <AppBar position="static" style={{background:'#1e6125e8'}}>
@@ -35,8 +45,8 @@ let HeaderView = ({ classes, searchQuery, onSearchQueryChange, onSearchSubmit, o
         </div>
       </form>
       <div className={classes.grow} />
-      <IoIosHeart align="right" style={{margin:"20px"}} />
-      <IoIosLogIn align="right" style={{margin:"20px"}} />
+      <IoIosHeart align="right" style={{margin:"20px"}} onClick={renderFavoritesList} />
+      <IoIosGitCompare align="right" style={{margin:"20px"}} onClick={renderComparisonList} />
       <ProfileControl />
     </Toolbar>
   </AppBar>
