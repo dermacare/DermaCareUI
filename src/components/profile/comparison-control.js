@@ -121,17 +121,19 @@ class ComparisonControl extends React.Component {
 
   render() {
     return (
-      <div align="center">
+      <div>
         <HeaderView
           searchQuery={this.state.search}
           onSearchBarFocus={this.onHeaderSearchBarFocus}
           onSearchSubmit={this.onSearchSubmit}
         />
+        <div align="center">
         <IconButton color='inherit' onClick={this.compare}>
         <Tooltip placement="top" title={compareTooltipTitle} aria-label="help">
         <MdCompare onClick={this.compare} style = {{ height: 50, width: 50, margin:"20px" }} />
         </Tooltip>
         </IconButton>
+        </div>
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
         <ListView align="left" results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
