@@ -24,6 +24,7 @@ class ComparisonControl extends React.Component {
     this.onResultSelect = this.onResultSelect.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.compare = this.compare.bind(this);
   };
 
   retrieveProduct(result){
@@ -97,10 +98,23 @@ class ComparisonControl extends React.Component {
       })
   }
 
-  compare(){    // CALLS COMMON INGREDIENTS ROUTE
+  compare(){
+    fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/comparison/compare', {
+        'headers': {'token': localStorage.getItem('token')}
+    })
+      .then(response => {
+          return response.json()
+      })
+      .then(json => {
+        if ('error' in json) {
+          this.setState({errorMsg: json.error})
+        } else {
+          this.setState({selectedResult: json});
+        }
     this.props.history.push({
       pathname: `/compare`,
     });
+  })
   }
 
   render() {
@@ -114,16 +128,14 @@ class ComparisonControl extends React.Component {
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
         <ListView results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
-        <button onClick={this.compare} align="right">COMMON</button>    // RANDOM BUTTON, CALLS COMMON INGREDIENTS ROUTE
+        <Button onClick={this.compare} align="right">Compare items</Button>
         <Switch>
-        // COMMON INGREDIENTS ROUTE
         <Route
           exact
           path="/compare"
           render={props => <ProductCompareControl result={this.selectedResult} {...props} />} />;
           }}
         />
-        // ROUTE ENDS HERE
         </Switch>
       </div>
     );
