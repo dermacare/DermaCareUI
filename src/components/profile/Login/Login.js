@@ -86,7 +86,7 @@ class Login extends React.Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
+    const data = new FormData(event.target.parentNode);
     fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/login', {
       method: 'POST',
       credentials: 'include',

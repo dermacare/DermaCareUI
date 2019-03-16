@@ -39,7 +39,6 @@ class ProfileControl extends React.Component {
 
   handleLogout = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
     fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/logout', {
       credentials: 'include',
       headers: {

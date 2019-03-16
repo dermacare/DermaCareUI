@@ -80,7 +80,7 @@ class SignUp extends React.Component {
 
   handleSignUp = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
+    const data = new FormData(event.target.parentNode);
     console.log(JSON.stringify(data));
     console.log(JSON.stringify(this.state.email));
     console.log(JSON.stringify(this.state.username));
