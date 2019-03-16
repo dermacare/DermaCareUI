@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
@@ -8,6 +7,8 @@ import querystring from 'query-string';
 import HeaderView from '../result/header-view';
 import ListView from '../result/list-view';
 import ProductCompareControl from '../product-compare/product-compare-control';
+
+import {MdCompare} from 'react-icons/md';
 
 class ComparisonControl extends React.Component {
   constructor(props) {
@@ -111,32 +112,24 @@ class ComparisonControl extends React.Component {
         } else {
           this.setState({selectedResult: json});
         }
-    this.props.history.push({
-      pathname: `/compare`,
-    });
   })
   }
 
   render() {
     return (
-      <div>
+      <div align="center">
         <HeaderView
           searchQuery={this.state.search}
           onSearchBarFocus={this.onHeaderSearchBarFocus}
           onSearchSubmit={this.onSearchSubmit}
         />
+        <MdCompare onClick={this.compare} style = {{ height: 50, width: 50, margin:"20px" }} />
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
         <ListView results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
-        <Button onClick={this.compare} align="right">Compare items</Button>
-        <Switch>
-        <Route
-          exact
-          path="/compare"
-          render={props => <ProductCompareControl result={this.selectedResult} {...props} />} />;
-          }}
-        />
-        </Switch>
+        {this.state.selectedResult !== null ?
+          <ProductCompareControl result={this.state.selectedResult} {...this.props} /> :
+          null}
       </div>
     );
   }

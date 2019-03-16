@@ -56,32 +56,6 @@ class ProductCompareView extends React.Component {
           COMMON INGREDIENTS IN THESE PRODUCTS ARE
         </Typography>
 
-          <Grid item>
-            <CardMedia style = {{ height: 120, width: 120 }}
-                className={classes.cover}
-                image={require('../../../assets/img/no-image.png')}
-                title="Product image"
-            />
-          </Grid>
-          <Grid item>
-            <Typography variant="h6" style = {{margin: '15px'}} className={'tableTitle'}>
-              {result.name}
-            </Typography>
-          </Grid>
-
-          <Grid item>
-            <CardMedia style = {{ height: 120, width: 120 }}
-                className={classes.cover}
-                image={require('../../../assets/img/no-image.png')}
-                title="Product image"
-            />
-          </Grid>
-          <Grid item>
-            <Typography variant="h6" style = {{margin: '15px'}} className={'tableTitle'}>
-              {result.name}
-            </Typography>
-          </Grid>
-
         </Grid>
         <Table className={classes.table}>
           <TableHead>
@@ -120,7 +94,7 @@ class ProductCompareView extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {result.ingredients.map(row => (
+            {result.common_ingredients.map(row => (
               <TableRow className={classes.row} key={row._id}>
                 <CustomTableCell component="th" scope="row">
                   {row.name}
