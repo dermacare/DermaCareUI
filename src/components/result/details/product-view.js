@@ -60,9 +60,7 @@ class ProductView extends React.Component {
   }
 
   addToCompareList(){
-    console.log("Clicked on compare list");
     let obj = this.props.result;  // Object to add to Comparison list
-    // ADD CODE HERE
     fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/comparison/add', {
       method: 'POST',
       credentials: 'include',
@@ -94,9 +92,7 @@ class ProductView extends React.Component {
   }
 
   addToFavoriteList(){
-    console.log("Clicked on favorites list");
     let obj = this.props.result;  // Object to add to Favorites list
-    // ADD CODE HERE
     fetch('http://dermacare.eastus.cloudapp.azure.com:3000/api/profile/favorites/add', {
       method: 'POST',
       credentials: 'include',

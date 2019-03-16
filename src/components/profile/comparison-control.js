@@ -8,7 +8,11 @@ import HeaderView from '../result/header-view';
 import ListView from '../result/list-view';
 import ProductCompareControl from '../product-compare/product-compare-control';
 
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 import {MdCompare} from 'react-icons/md';
+
+const compareTooltipTitle = "Compare these products";
 
 class ComparisonControl extends React.Component {
   constructor(props) {
@@ -123,10 +127,14 @@ class ComparisonControl extends React.Component {
           onSearchBarFocus={this.onHeaderSearchBarFocus}
           onSearchSubmit={this.onSearchSubmit}
         />
+        <IconButton color='inherit' onClick={this.compare}>
+        <Tooltip placement="top" title={compareTooltipTitle} aria-label="help">
         <MdCompare onClick={this.compare} style = {{ height: 50, width: 50, margin:"20px" }} />
+        </Tooltip>
+        </IconButton>
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
-        <ListView results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
+        <ListView align="left" results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
         {this.state.selectedResult !== null ?
           <ProductCompareControl result={this.state.selectedResult} {...this.props} /> :
           null}
