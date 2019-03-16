@@ -1,11 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 import querystring from 'query-string';
 import HeaderView from '../result/header-view';
 import ListView from '../result/list-view';
+import ProductCompareControl from '../product-compare/product-compare-control';
 
 class ComparisonControl extends React.Component {
   constructor(props) {
@@ -95,6 +97,12 @@ class ComparisonControl extends React.Component {
       })
   }
 
+  compare(){    // CALLS COMMON INGREDIENTS ROUTE
+    this.props.history.push({
+      pathname: `/compare`,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -106,10 +114,20 @@ class ComparisonControl extends React.Component {
         {this.state.errorMsg !== ''
           ? (<font color="red">{this.state.errorMsg}</font>) : (<p/>)}
         <ListView results={this.state.results} onResultSelect={this.onResultSelect} showRemove={true} onRemove={this.onRemove} />
+        <button onClick={this.compare} align="right">COMMON</button>    // RANDOM BUTTON, CALLS COMMON INGREDIENTS ROUTE
+        <Switch>
+        // COMMON INGREDIENTS ROUTE
+        <Route
+          exact
+          path="/compare"
+          render={props => <ProductCompareControl result={this.selectedResult} {...props} />} />;
+          }}
+        />
+        // ROUTE ENDS HERE
+        </Switch>
       </div>
     );
   }
 }
 
 export default withRouter(ComparisonControl);
-
